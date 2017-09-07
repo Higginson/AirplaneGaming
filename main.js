@@ -13,13 +13,12 @@ let __main = function () {
     fire: 'img/fire.png'
   };
 
-  var game = GuaGame.instance(30, images, function (g) {
-    var s = Scene.new(g);
+  GuaGame.instance(30, images, function (g) {
+    let s = Scene.new(g);
     // var s = SceneTitle.new(g);
     g.runWithScene(s);
   });
 
-  enableDebugMode(game, true);
 
 };
 

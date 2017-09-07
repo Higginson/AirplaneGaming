@@ -9,10 +9,9 @@ class Scene extends GuaScene {
     let game = this.game;
     this.numberOfEnemies = 10;
     this.numberOfClouds = 2;
-    this.bg = GuaImage.new(game, 'sky');
+    this.bg = Sky.new(game);
     this.cloud = Cloud.new(game);
     this.player = Player.new(game);
-
 
     this.addElement(this.bg);
     this.addElement(this.cloud);
