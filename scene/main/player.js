@@ -1,4 +1,3 @@
-
 class Player extends GuaImage {
   constructor(game) {
     super(game, "player");
