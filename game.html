@@ -13,6 +13,9 @@
   <script type="text/javascript" src="guagame/utils.js"></script>
   <script type="text/javascript" src="guagame/gua_scene.js"></script>
   <script type="text/javascript" src="guagame/gua_image.js"></script>
+  <script type="text/javascript" src="guagame/gua_partice_system.js"></script>
+  <script type="text/javascript" src="guagame/gua_label.js"></script>
+  <script type="text/javascript" src="guagame/gua_animation.js"></script>
   <!--场景文件-->
   <script type="text/javascript" src="scene/main/scene.js"></script>
   <script type="text/javascript" src="scene/main/block.js"></script>
@@ -56,10 +59,8 @@
 <script type="text/javascript" src="main.js"></script>
 <script>
   var es = sel => document.querySelectorAll(sel);
-  debugger;
   var bindAll = function (sel, eventName, callback) {
     var l = es(sel);
-    debugger;
     for (var i = 0; i < l.length; i++) {
       var input = l[i];
       input.addEventListener(eventName, function (event) {
