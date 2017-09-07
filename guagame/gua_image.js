@@ -20,10 +20,3 @@ class GuaImage {
   update() {
   }
 }
-
-//逻辑上来说，不应该继承 GuaImage，但是暂时这么做
-// class Player extends GuaImage {
-//   constructor(game, name) {
-//     super(game, name);
-//   }
-// }

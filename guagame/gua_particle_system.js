@@ -1,32 +1,3 @@
-class GuaParticle extends GuaImage {
-  constructor(game) {
-    super(game, 'fire');
-    this.setup();
-  }
-
-  setup() {
-    this.life = 20;//帧数
-  }
-
-  init(x, y, vx, vy) {
-    this.x = x;
-    this.y = y;
-    this.vx = vx;
-    this.vy = vy;
-  }
-
-  update() {
-    this.life--;
-    this.x += this.vx;
-    this.y += this.vy;
-
-    let factor = 0.01;
-
-    this.vx += factor * this.vx;
-    this.vy += factor * this.vy;
-  }
-}
-
 class GuaParticleSystem {
   constructor(game) {
     this.game = game;
@@ -50,11 +21,11 @@ class GuaParticleSystem {
 
     //添加火花
     if (this.particles.length < this.numberOfParticles) {
-      var p = GuaParticle.new(this.game);
+      let p = GuaParticle.new(this.game);
       //设置初始化坐标
-      var s = 2;
-      var vx = randomBetween(-s, s);
-      var vy = randomBetween(-s, s);
+      let s = 2;
+      let vx = randomBetween(-s, s);
+      let vy = randomBetween(-s, s);
 
       p.init(this.x, this.y, vx, vy);
       this.particles.push(p);
@@ -71,8 +42,6 @@ class GuaParticleSystem {
 
   draw() {
     if (this.duration < 0) {
-      //todo 这是一个临时的方案
-      //应该从scene 中删除自己
       return;
     }
     for (let p of this.particles) {

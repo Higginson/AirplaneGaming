@@ -13,19 +13,14 @@
   <script type="text/javascript" src="guagame/utils.js"></script>
   <script type="text/javascript" src="guagame/gua_scene.js"></script>
   <script type="text/javascript" src="guagame/gua_image.js"></script>
-  <script type="text/javascript" src="guagame/gua_partice_system.js"></script>
+  <script type="text/javascript" src="guagame/gua_particle_system.js"></script>
+  <script type="text/javascript" src="guagame/gua_particle.js"></script>
   <script type="text/javascript" src="guagame/gua_label.js"></script>
-  <script type="text/javascript" src="guagame/gua_animation.js"></script>
   <!--场景文件-->
   <script type="text/javascript" src="scene/main/scene.js"></script>
-  <script type="text/javascript" src="scene/main/block.js"></script>
-  <script type="text/javascript" src="scene/main/paddle.js"></script>
-  <script type="text/javascript" src="scene/main/ball.js"></script>
   <!--结束和标题场景-->
   <script type="text/javascript" src="scene/end/scene_end.js"></script>
   <script type="text/javascript" src="scene/title/scene_title.js"></script>
-  <!--关卡数据-->
-  <script type="text/javascript" src="level.js"></script>
 </head>
 <body>
 
@@ -58,11 +53,11 @@
 
 <script type="text/javascript" src="main.js"></script>
 <script>
-  var es = sel => document.querySelectorAll(sel);
-  var bindAll = function (sel, eventName, callback) {
-    var l = es(sel);
-    for (var i = 0; i < l.length; i++) {
-      var input = l[i];
+  let es = sel => document.querySelectorAll(sel);
+  let bindAll = function (sel, eventName, callback) {
+    let l = es(sel);
+    for (let i = 0; i < l.length; i++) {
+      let input = l[i];
       input.addEventListener(eventName, function (event) {
         callback(event);
       });
@@ -70,12 +65,12 @@
   };
 
   bindAll('.gua-auto-slider', 'input', function (event) {
-    var target = event.target;
-    var bindVar = target.dataset.value;
-    var v = target.value;
+    let target = event.target;
+    let bindVar = target.dataset.value;
+    let v = target.value;
     eval(bindVar + '=' + v);
     //显示
-    var label = target.closest('label').querySelector('.gua-label');
+    let label = target.closest('label').querySelector('.gua-label');
     label.innerText = v;
   });
 </script>

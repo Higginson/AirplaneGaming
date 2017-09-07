@@ -1,34 +1,9 @@
-var loadLevel = function (game, n) {
-  n = n - 1;
-  let level = levels[n];
-  let blocks = [];
-  for (let i = 0; i < level.length; i++) {
-    let p = level[i];
-    let b = Block.instance(game, p);
-    blocks.push(b);
-  }
-  return blocks;
-};
+let __main = function () {
 
-var enableDebugMode = function (game, enable) {
-  if (!enable) {
-    return;
-  }
-  window.paused = true;
-  //为了debug
-  window.addEventListener('keydown', function (event) {
-    if (event.key === 'p') {
-      //暂停
-      window.paused = !window.paused;
-    }
-  });
-};
-
-var __main = function () {
-
-  var images = {
+  let images = {
     bullet: 'img/bullet.png',
-    cloud: 'img/cloud2.png',
+    cloud1: 'img/cloud1.png',
+    cloud2: 'img/cloud2.png',
     player: 'img/player.png',
     sky: 'img/sky.jpg',
     enemy1: 'img/enemy1.png',
@@ -39,8 +14,8 @@ var __main = function () {
   };
 
   var game = GuaGame.instance(30, images, function (g) {
-    // var s = Scene.new(g);
-    var s = SceneTitle.new(g);
+    var s = Scene.new(g);
+    // var s = SceneTitle.new(g);
     g.runWithScene(s);
   });
 
