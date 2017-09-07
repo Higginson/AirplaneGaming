@@ -12,7 +12,7 @@ class GuaGame {
     this.context = this.canvas.getContext("2d");
 
     //events
-    var self = this;//有回调，this作用域会改变，设置self来存储this，当然可以用 箭头函数
+    let self = this;//有回调，this作用域会改变，设置self来存储this，当然可以用 箭头函数
     //这里用两种方式
     window.addEventListener("keydown", event => {
       this.keydowns[event.key] = true;
@@ -34,7 +34,6 @@ class GuaGame {
     this.context.drawImage(img.texture, img.x, img.y);
   }
 
-  /*箭头函数规避 this 作用域陷阱*/
   //update
   update() {
     this.scene.update();

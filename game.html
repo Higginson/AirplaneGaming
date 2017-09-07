@@ -26,9 +26,57 @@
 </head>
 <body>
 
-<canvas id="id-canvas" width="400" height="300"></canvas>
+<canvas id="id-canvas" width="400" height="600"></canvas>
 <hr>
-<input id="id-input-speed" type="range" value="1"/>
+<div class="">
+  <label>
+    <input type="range" value="" max="20" data-value="config.player_speed" class="gua-auto-slider">
+    玩家速度：<span class="gua-label"></span>
+  </label>
+</div>
+<div class="">
+  <label>
+    <input type="range" value="" max="10" data-value="config.bullet_speed" class="gua-auto-slider">
+    子弹速度：<span class="gua-label"></span>
+  </label>
+</div>
+<div class="">
+  <label>
+    <input type="range" value="" max="10" data-value="config.fire_cooldown" class="gua-auto-slider">
+    子弹冷却时间：<span class="gua-label"></span>
+  </label>
+</div>
+<div class="">
+  <label>
+    <input type="range" value="" min="-10" max="10" data-value="config.cloud_speed" class="gua-auto-slider">
+    cloud speed：<span class="gua-label"></span>
+  </label>
+</div>
+
 <script type="text/javascript" src="main.js"></script>
+<script>
+  var es = sel => document.querySelectorAll(sel);
+  debugger;
+  var bindAll = function (sel, eventName, callback) {
+    var l = es(sel);
+    debugger;
+    for (var i = 0; i < l.length; i++) {
+      var input = l[i];
+      input.addEventListener(eventName, function (event) {
+        callback(event);
+      });
+    }
+  };
+
+  bindAll('.gua-auto-slider', 'input', function (event) {
+    var target = event.target;
+    var bindVar = target.dataset.value;
+    var v = target.value;
+    eval(bindVar + '=' + v);
+    //显示
+    var label = target.closest('label').querySelector('.gua-label');
+    label.innerText = v;
+  });
+</script>
 </body>
 </html>

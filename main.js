@@ -22,12 +22,6 @@ var enableDebugMode = function (game, enable) {
       window.paused = !window.paused;
     }
   });
-
-  //控制速度
-  document.querySelector("#id-input-speed").addEventListener('input', function (event) {
-    var input = event.target;
-    window.fps = Number(input.value);
-  });
 };
 
 var __main = function () {
@@ -36,7 +30,11 @@ var __main = function () {
     bullet: 'img/bullet.png',
     cloud: 'img/cloud2.png',
     player: 'img/player.png',
-    sky: 'img/sky.png',
+    sky: 'img/sky.jpg',
+    enemy1: 'img/enemy1.png',
+    enemy2: 'img/enemy2.png',
+    enemy3: 'img/enemy3.png',
+    enemy4: 'img/enemy4.png',
   };
 
   var game = GuaGame.instance(30, images, function (g) {
