@@ -51,10 +51,10 @@ class GuaGame {
 
   runLoop() {
     //events
-    var g = this;
-    var actions = Object.keys(g.actions);
-    for (var i = 0; i < actions.length; i++) {
-      var key = actions[i];
+    let g = this;
+    let actions = Object.keys(g.actions);
+    for (let i = 0; i < actions.length; i++) {
+      let key = actions[i];
       if (g.keydowns[key]) {
         //如果按键被按下，调用
         g.actions[key]();
@@ -75,14 +75,14 @@ class GuaGame {
   };
 
   init() {
-    var g = this;
-    var loads = [];
+    let g = this;
+    let loads = [];
 
     //预先载入所有图片
-    var names = Object.keys(g.images);
-    for (var i = 0; i < names.length; i++) {
+    let names = Object.keys(g.images);
+    for (let i = 0; i < names.length; i++) {
       let name = names[i];
-      var path = g.images[name];
+      let path = g.images[name];
       let img = new Image();
       img.src = path;
       img.onload = function () {
@@ -99,18 +99,12 @@ class GuaGame {
   }
 
   textureByName(name) {
-    var g = this;
-    var img = g.images[name];
-    // var image = {
-    //   w: img.width,
-    //   h: img.height,
-    //   image: img
-    // };
-    return img;
+    let g = this;
+    return g.images[name];
   };
 
   runWithScene(scene) {
-    var g = this;
+    let g = this;
     g.scene = scene;
     //开始运行程序
     setTimeout(function () {
