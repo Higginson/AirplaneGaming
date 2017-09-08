@@ -7,15 +7,30 @@ class Enemy extends GuaImage {
   }
 
   setup() {
-    this.speed = randomBetween(2, 5);
+    this.speedX = randomBetween(-2, 2);
+    this.speedY = randomBetween(2, 5);
     this.x = randomBetween(0, 350);
     this.y = -randomBetween(0, 200);
   }
 
   update() {
-    this.y += this.speed;
+    this.x += this.speedX;
+    this.y += this.speedY;
     if (this.y > 600) {
       this.setup();
+      this.fire();
     }
   }
+
+
+  fire() {
+    let x = this.x + this.w / 2;
+    let y = this.y;
+    let b = EnemyBullet.new(this.game);
+    b.x = x;
+    b.y = y;
+    this.scene.addElement(b);//?想一想
+  }
+
+
 }

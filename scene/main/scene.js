@@ -21,8 +21,8 @@ class Scene extends GuaScene {
     //增加敌机
     this.addEnemies();
     // add particles
-    let ps = GuaParticleSystem.new(this.game);
-    this.addElement(ps);
+    // let ps = GuaParticleSystem.new(this.game);
+    // this.addElement(ps);
   }
 
   addEnemies() {
@@ -31,6 +31,7 @@ class Scene extends GuaScene {
       let e = Enemy.new(this.game);
       es.push(e);
       this.addElement(e);
+      e.fire();
 
     }
     this.enemies = es;

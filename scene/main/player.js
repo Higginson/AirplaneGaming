@@ -20,7 +20,7 @@ class Player extends GuaImage {
   fire() {
     //子弹冷却
     if (this.coolDown === 0) {
-      this.coolDown = config.fire_cooldown;//10帧之后发射子弹
+      this.coolDown = config.fire_cooldown;//config.fire_cooldown帧之后发射子弹
       let x = this.x + this.w / 2;
       let y = this.y;
       let b = Bullet.new(this.game);
@@ -31,19 +31,27 @@ class Player extends GuaImage {
   }
 
   moveLeft() {
-    this.x -= this.speed;
+    if (this.x > 0){
+      this.x -= this.speed;
+    }
   }
 
   moveRight() {
-    this.x += this.speed;
+    if (this.x < 400 - this.w) {
+      this.x += this.speed;
+    }
   }
 
   moveUp() {
-    this.y -= this.speed;
+    if (this.y > 0) {
+      this.y -= this.speed;
+    }
   }
 
   moveDown() {
-    this.y += this.speed;
+    if (this.y < 600 - this.h)  {
+      this.y += this.speed;
+    }
   }
 
 }
