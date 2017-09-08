@@ -9,6 +9,7 @@ class Player extends GuaImage {
     this.coolDown = 0;
     this.x = 200 - this.w / 2;
     this.y = 400;
+    this.alive = true;
   }
 
   update() {
@@ -30,8 +31,18 @@ class Player extends GuaImage {
     }
   }
 
+  kill() {
+    let p = this;
+    p.alive = false;
+  }
+
+  collide(e) {
+    let p = this;
+    return p.alive && ( rectIntersects(p, e) || rectIntersects(e, p));
+  }
+
   moveLeft() {
-    if (this.x > 0){
+    if (this.x > 0) {
       this.x -= this.speed;
     }
   }
@@ -49,8 +60,14 @@ class Player extends GuaImage {
   }
 
   moveDown() {
-    if (this.y < 600 - this.h)  {
+    if (this.y < 600 - this.h) {
       this.y += this.speed;
+    }
+  }
+
+  draw() {
+    if (this.alive) {
+      this.game.drawImage(this);
     }
   }
 

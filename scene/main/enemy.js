@@ -14,12 +14,16 @@ class Enemy extends GuaImage {
   }
 
   update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
+    this.move();
     if (this.y > 600) {
       this.setup();
       this.fire();
     }
+  }
+
+  move() {
+    this.x += this.speedX;
+    this.y += this.speedY;
   }
 
 

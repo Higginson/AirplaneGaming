@@ -15,7 +15,6 @@ class GuaScene {
 
   draw() {
     for (let e of this.elements) {
-      // this.game.drawImage(e);
       e.draw();
     }
   }

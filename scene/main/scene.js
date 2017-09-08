@@ -3,11 +3,12 @@ class Scene extends GuaScene {
     super(game);
     this.setup();
     this.setupInputs();
+
   }
 
   setup() {
     let game = this.game;
-    this.numberOfEnemies = 10;
+    this.numberOfEnemies = 1;
     this.numberOfClouds = 2;
     this.bg = Sky.new(game);
     this.cloud = Cloud.new(game);
@@ -23,6 +24,8 @@ class Scene extends GuaScene {
     // add particles
     // let ps = GuaParticleSystem.new(this.game);
     // this.addElement(ps);
+
+
   }
 
   addEnemies() {
@@ -31,6 +34,8 @@ class Scene extends GuaScene {
       let e = Enemy.new(this.game);
       es.push(e);
       this.addElement(e);
+
+      //每架敌机均能开火
       e.fire();
 
     }
@@ -50,26 +55,37 @@ class Scene extends GuaScene {
 
   setupInputs() {
     let g = this.game;
-    let s = this.player;
+    let p = this.player;
     g.registerAction('a', function () {
-      s.moveLeft();
+      p.moveLeft();
     });
     g.registerAction('d', function () {
-      s.moveRight();
+      p.moveRight();
     });
     g.registerAction('w', function () {
-      s.moveUp();
+      p.moveUp();
     });
     g.registerAction('s', function () {
-      s.moveDown();
+      p.moveDown();
     });
     g.registerAction('j', function () {
-      s.fire();
+      p.fire();
     });
+  }
+
+  setupKill() {
+    let p = this.player;
+    let es = this.enemies;
+    for (let e of es) {
+      if (p.collide(e)) {
+        p.kill();
+      }
+    }
   }
 
   update() {
     super.update();
+    this.setupKill();
   }
 
 }
