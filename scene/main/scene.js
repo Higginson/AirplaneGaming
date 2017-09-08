@@ -8,7 +8,7 @@ class Scene extends GuaScene {
 
   setup() {
     let game = this.game;
-    this.numberOfEnemies = 1;
+    this.numberOfEnemies = 5;
     this.numberOfClouds = 2;
     this.bg = Sky.new(game);
     this.cloud = Cloud.new(game);
@@ -71,6 +71,7 @@ class Scene extends GuaScene {
     g.registerAction('j', function () {
       p.fire();
     });
+
   }
 
   setupKill() {

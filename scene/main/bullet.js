@@ -9,6 +9,8 @@ class Bullet extends GuaImage {
   }
 
   update() {
-    this.y -= this.speed;
+    if (window.paused) {
+      this.y -= this.speed;
+    }
   }
 }

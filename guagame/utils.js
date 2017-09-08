@@ -16,3 +16,15 @@ const randomBetween = function (start, end) {
   let n = Math.random() * (end - start + 1) + start;
   return Math.floor(n);
 };
+
+const enableDebugMode = function () {
+  window.paused = true;
+  //放在window下暂停会很流畅
+  window.addEventListener('keydown', function (event) {
+    if (event.key === 'p') {
+      //暂停
+      window.paused = !window.paused;
+    }
+  });
+};
+

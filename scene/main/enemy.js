@@ -22,10 +22,11 @@ class Enemy extends GuaImage {
   }
 
   move() {
-    this.x += this.speedX;
-    this.y += this.speedY;
+    if (window.paused) {
+      this.x += this.speedX;
+      this.y += this.speedY;
+    }
   }
-
 
   fire() {
     let x = this.x + this.w / 2;

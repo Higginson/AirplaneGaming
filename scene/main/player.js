@@ -42,27 +42,37 @@ class Player extends GuaImage {
   }
 
   moveLeft() {
-    if (this.x > 0) {
-      this.x -= this.speed;
-    }
+    this.move(this.x - this.speed, this.y);
   }
 
   moveRight() {
-    if (this.x < 400 - this.w) {
-      this.x += this.speed;
-    }
+    this.move(this.x + this.speed, this.y);
   }
 
   moveUp() {
-    if (this.y > 0) {
-      this.y -= this.speed;
-    }
+    this.move(this.x, this.y - this.speed);
   }
 
   moveDown() {
-    if (this.y < 600 - this.h) {
-      this.y += this.speed;
+    this.move(this.x, this.y + this.speed);
+  }
+
+  move(x, y) {
+    if (x < 0) {
+      x = 0;
     }
+    if (x > 400 - this.w) {
+      x = 400 - this.w;
+    }
+    if (y < 0) {
+      y = 0;
+    }
+    if (y > 600 - this.h) {
+      y = 600 - this.h;
+    }
+
+    this.x = x;
+    this.y = y;
   }
 
   draw() {

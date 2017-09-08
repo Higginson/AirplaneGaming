@@ -19,6 +19,7 @@ let __main = function () {
     g.runWithScene(s);
   });
 
+  enableDebugMode();
 
 };
 
