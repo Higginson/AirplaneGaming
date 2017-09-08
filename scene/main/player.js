@@ -75,6 +75,12 @@ class Player extends GuaImage {
     this.y = y;
   }
 
+  hasPoint (x, y) {
+    let xIn = x >= this.x && x <= this.x + this.w;
+    let yIn = y >= this.y && y <= this.y + this.h;
+    return xIn && yIn;
+  };
+
   draw() {
     if (this.alive) {
       this.game.drawImage(this);

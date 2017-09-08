@@ -72,6 +72,7 @@ class Scene extends GuaScene {
       p.fire();
     });
 
+    drag(g, p);
   }
 
   setupKill() {
