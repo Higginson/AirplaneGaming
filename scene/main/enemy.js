@@ -4,6 +4,7 @@ class Enemy extends GuaImage {
     let name = 'enemy' + type;
     super(game, name);
     this.setup();
+    this.alive = true;
   }
 
   setup() {
@@ -35,6 +36,23 @@ class Enemy extends GuaImage {
     b.x = x;
     b.y = y;
     this.scene.addElement(b);//?想一想
+    return b;
+  }
+
+  collide(e) {
+    let p = this;
+    return p.alive && (rectIntersects(p, e) || rectIntersects(e, p));
+  }
+
+  kill() {
+    let e = this;
+    e.alive = false;
+  }
+
+  draw() {
+    if (this.alive) {
+      this.game.drawImage(this);
+    }
   }
 
 

@@ -2,14 +2,15 @@ class Scene extends GuaScene {
   constructor(game) {
     super(game);
     this.setup();
-    this.setupInputs();
+    this.operateAirplane();
 
   }
 
   setup() {
     let game = this.game;
-    this.numberOfEnemies = 5;
-    this.numberOfClouds = 2;
+    this.my_bullets = [];
+    this.numberOfEnemies = 8;
+    this.numberOfClouds = 3;
     this.bg = Sky.new(game);
     this.cloud = Cloud.new(game);
     this.player = Player.new(game);
@@ -30,16 +31,18 @@ class Scene extends GuaScene {
 
   addEnemies() {
     let es = [];
+    let e_bullets = [];
     for (let i = 0; i < this.numberOfEnemies; i++) {
       let e = Enemy.new(this.game);
       es.push(e);
       this.addElement(e);
 
       //每架敌机均能开火
-      e.fire();
-
+      let eBullet = e.fire();
+      e_bullets.push(eBullet);
     }
     this.enemies = es;
+    this.enemies_bullets = e_bullets;
   }
 
   addClouds() {
@@ -48,14 +51,13 @@ class Scene extends GuaScene {
       let c = Cloud.new(this.game);
       cs.push(c);
       this.addElement(c);
-
     }
-    this.clouds = cs;
   }
 
-  setupInputs() {
+  operateAirplane() {
     let g = this.game;
     let p = this.player;
+    let bullets = [];
     g.registerAction('a', function () {
       p.moveLeft();
     });
@@ -69,25 +71,61 @@ class Scene extends GuaScene {
       p.moveDown();
     });
     g.registerAction('j', function () {
-      p.fire();
-    });
-
+      if (p.alive) {
+        let bullet = p.fire();
+        if (bullet) {
+          bullets.push(bullet);
+        }
+        this.my_bullets = bullets;
+      }
+    }.bind(this));
+    //拖拽 player 飞机
     drag(g, p);
   }
 
-  setupKill() {
+  //撞机后死亡
+  killByEnemy() {
     let p = this.player;
     let es = this.enemies;
+    let enemies_bullets = this.enemies_bullets;
+    //飞机和飞机相撞
     for (let e of es) {
       if (p.collide(e)) {
         p.kill();
+        e.kill();
+      }
+    }
+    //被击中了
+    for (let b of enemies_bullets) {
+      if (p.collide(b)) {
+        p.kill();
+        b.kill();
+      }
+    }
+  }
+
+  //击毙敌机
+  killEnemy() {
+    if (this.my_bullets !== []) {
+      let my_bullets = this.my_bullets;
+      let es = this.enemies;
+      //敌人被击落
+      for (let my_bullet of my_bullets) {
+        for(let e of es) {
+          if(e.collide(my_bullet)) {
+            log("中");
+            e.kill();
+            my_bullet.kill();
+          }
+        }
       }
     }
   }
 
   update() {
     super.update();
-    this.setupKill();
+    this.killByEnemy();
+    this.killEnemy();
   }
 
 }

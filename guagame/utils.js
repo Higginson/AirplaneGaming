@@ -36,7 +36,6 @@ const drag = function (g, p) {
     let x = event.offsetX;
     let y = event.offsetY;
     // 检查是否点中了ball
-    log(this);
     if (p.hasPoint(x, y)) {
       //设置拖拽状态
       enableDrag = true;

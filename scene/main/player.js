@@ -28,6 +28,7 @@ class Player extends GuaImage {
       b.x = x;
       b.y = y;
       this.scene.addElement(b);//?想一想
+      return b;
     }
   }
 

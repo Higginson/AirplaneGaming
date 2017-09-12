@@ -58,7 +58,6 @@ class GuaGame {
       if (g.keydowns[key]) {
         //如果按键被按下，调用
         g.actions[key]();
-
       }
     }
 
