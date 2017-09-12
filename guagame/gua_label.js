@@ -9,7 +9,15 @@ class GuaLabel {
   }
 
   draw() {
-    this.game.context.fillText(this.text, 100, 100);
+    let labelY = 400 / 2;
+    this.text.forEach((element,index) => {
+      labelY += 50;
+      if (index !== 0){
+        this.game.context.fillText(element, 120, labelY);
+      } else {
+        this.game.context.fillText(element, 100, labelY);
+      }
+    });
   }
 
   update() {

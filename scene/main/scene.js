@@ -88,19 +88,27 @@ class Scene extends GuaScene {
     let p = this.player;
     let es = this.enemies;
     let enemies_bullets = this.enemies_bullets;
-    //飞机和飞机相撞
+
     for (let e of es) {
-      if (p.collide(e)) {
-        p.kill();
-        e.kill();
+      for (let b of enemies_bullets) {
+        //飞机和飞机相撞
+        if (p.collide(e)) {
+          p.kill();
+          e.kill();
+          log("相撞");
+        }
+        //被击中了
+        if (p.collide(b)) {
+          p.kill();
+          b.kill();
+          log("被击中");
+        }
       }
     }
-    //被击中了
-    for (let b of enemies_bullets) {
-      if (p.collide(b)) {
-        p.kill();
-        b.kill();
-      }
+
+    if (!p.alive) {
+      let end = SceneEnd.new(this.game);
+      this.game.replaceScene(end);
     }
   }
 
@@ -111,8 +119,8 @@ class Scene extends GuaScene {
       let es = this.enemies;
       //敌人被击落
       for (let my_bullet of my_bullets) {
-        for(let e of es) {
-          if(e.collide(my_bullet)) {
+        for (let e of es) {
+          if (e.collide(my_bullet)) {
             log("中");
             e.kill();
             my_bullet.kill();

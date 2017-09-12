@@ -14,8 +14,8 @@ let __main = function () {
   };
 
   GuaGame.instance(30, images, function (g) {
-    let s = Scene.new(g);
-    // var s = SceneTitle.new(g);
+    // let s = Scene.new(g);
+    let s = SceneTitle.new(g);
     g.runWithScene(s);
   });
 

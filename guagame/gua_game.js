@@ -21,6 +21,7 @@ class GuaGame {
       self.keydowns[event.key] = false;
     });
 
+    //init()初始化载入图片
     this.init();
   }
 
